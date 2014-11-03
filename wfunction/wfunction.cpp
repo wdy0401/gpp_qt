@@ -1,4 +1,5 @@
 #include"wfunction.h"
+#include<map>
 #include<list>
 #include<string>
 #include<Windows.h>
@@ -94,6 +95,35 @@ char * wfunction::ctp_time_char_convert(char * ori,int length)
 		
 	}
 	return ret;
+}
+string  wfunction::joinquote(const std::string & tojoin)
+{
+    static map<string,string> stringmap;
+    list <string> ls=splitstring(tojoin," ");
+    if(ls.size()!=3)
+    {
+            return NULL;
+    }
+    list<string>::iterator iter=ls.begin();
+    stringmap["0"]=iter->c_str();
+    iter++;
+    stringmap[iter->c_str()]=(++iter)->c_str();
+
+    string laststr="";
+    for (map<string,string>::iterator iter=stringmap.begin();iter!=stringmap.end();iter++)
+    {
+        if(iter->first=="0")
+        {
+            laststr+=iter->second.c_str();
+            laststr+="\t";
+            continue;
+        }
+        laststr+=iter->first.c_str();
+        laststr+="\t";
+        laststr+=iter->second.c_str();
+        laststr+="\t";
+    }
+    return laststr;
 }
 /*
 #include<iostream>
