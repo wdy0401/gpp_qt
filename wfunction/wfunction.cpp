@@ -3,13 +3,14 @@
 #include<list>
 #include<string>
 #include<iostream>
+#include<sstream>
 #include<Windows.h>
 
 using namespace std;
 std::string wfunction::itos(long i) 
 {
 	std::ostringstream os; 
-	os<<i; 
+    os<<i;
 	std::string result;  
 	std::istringstream is(os.str()); 
 	is>>result;

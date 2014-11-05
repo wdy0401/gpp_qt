@@ -1,21 +1,8 @@
 #ifndef WFUNCTION
 #define WFUNCTION
 
-#include<string>
-#include<iostream> 
-#include<stdlib.h>
-#include<sstream>
 #include<list>
-#include<windows.h>
-
-#include <fstream>
-#include <iostream>
-
-/*
-namespace WFUNCTION {
-	class wfunction;
-}
-*/
+#include<string>
 class wfunction
 {
 public:
