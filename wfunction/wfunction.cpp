@@ -2,6 +2,7 @@
 #include<map>
 #include<list>
 #include<string>
+#include<iostream>
 #include<Windows.h>
 
 using namespace std;
@@ -98,32 +99,33 @@ char * wfunction::ctp_time_char_convert(char * ori,int length)
 }
 string  wfunction::joinquote(const std::string & tojoin)
 {
+    string ret="";
     static map<string,string> stringmap;
-    list <string> ls=splitstring(tojoin," ");
+    list <string> ls=splitstring(tojoin,"\t");
     if(ls.size()!=3)
     {
-            return NULL;
+        cerr<<"ERROR : wfunction::joinquote\t\tstring=tojoin"<<endl;
+        return ret;
     }
     list<string>::iterator iter=ls.begin();
     stringmap["0"]=iter->c_str();
     iter++;
     stringmap[iter->c_str()]=(++iter)->c_str();
 
-    string laststr="";
     for (map<string,string>::iterator iter=stringmap.begin();iter!=stringmap.end();iter++)
     {
         if(iter->first=="0")
         {
-            laststr+=iter->second.c_str();
-            laststr+="\t";
+            ret+=iter->second.c_str();
+            ret+="\t";
             continue;
         }
-        laststr+=iter->first.c_str();
-        laststr+="\t";
-        laststr+=iter->second.c_str();
-        laststr+="\t";
+        ret+=iter->first.c_str();
+        ret+="\t";
+        ret+=iter->second.c_str();
+        ret+="\t";
     }
-    return laststr;
+    return ret;
 }
 /*
 #include<iostream>
