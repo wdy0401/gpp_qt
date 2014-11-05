@@ -28,8 +28,6 @@ public:
 
     //CTP
     static std::string joinquote(const std::string &);
-
-
 	static char * ctp_time_char_convert(char *,int );
 };
 #endif
