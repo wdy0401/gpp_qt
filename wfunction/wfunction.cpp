@@ -5,24 +5,27 @@
 #include<iostream>
 #include<sstream>
 #include<Windows.h>
+#include"time.h"
+#include"stdio.h"
 
 using namespace std;
-std::string wfunction::itos(long i) 
+
+string wfunction::itos(long i)
 {
-	std::ostringstream os; 
+    ostringstream os;
     os<<i;
-	std::string result;  
-	std::istringstream is(os.str()); 
+    string result;
+    istringstream is(os.str());
 	is>>result;
 	return result; 
 }
 
-std::string wfunction::ftos(double f)
+string wfunction::ftos(double f)
 {
-	std::ostringstream os; 
+    ostringstream os;
 	os<<f; 
-	std::string result;  
-	std::istringstream is(os.str()); 
+    string result;
+    istringstream is(os.str());
 	is>>result;
 	return result; 
 }
@@ -128,26 +131,13 @@ string  wfunction::joinquote(const std::string & tojoin)
     }
     return ret;
 }
-/*
-#include<iostream>
-#include<fstream>
-int main()
+string wfunction::get_now_second()
 {
-	ifstream infile;
-	string filename="d://data_trans.csv";
-	wfunction wf;
-	infile.open(filename.c_str());
-	if(! infile.is_open()) //检测文件存在性
-	{
-		cerr << "Cannot openfile " << filename.c_str() << endl;
-		getchar();
-		return 1;
-	}
-	string tp;
-	while(getline(infile,tp))
-	{
-		wf.splitstring(tp);
-	}
-	return 0;
+    struct tm*ptr;
+    time_t lt;
+    char str[80];
+    lt=time(NULL);
+    ptr=localtime(&lt);
+    strftime(str,sizeof(str),"%Y%m%d_%H_%M_%S",ptr);
+    return str;
 }
-*/

@@ -12,6 +12,7 @@ public:
 	static std::list<std::string> splitstring(std::string,const std::string &);
 	static char * gbk2utf8(const char*);
 	static char * utf82gbk(const char*);
+    static std::string get_now_second();
 
     //CTP
     static std::string joinquote(const std::string &);
