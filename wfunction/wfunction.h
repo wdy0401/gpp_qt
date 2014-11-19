@@ -1,6 +1,5 @@
 #ifndef WFUNCTION
 #define WFUNCTION
-
 #include<list>
 #include<string>
 class wfunction
@@ -13,6 +12,7 @@ public:
 	static char * gbk2utf8(const char*);
 	static char * utf82gbk(const char*);
     static std::string get_now_second();
+    static int wfunction::wmkdir(char *pDir);
 
     //CTP
     static std::string joinquote(const std::string &);
