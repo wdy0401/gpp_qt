@@ -159,8 +159,9 @@ string wfunction::get_now_second()
     strftime(str,sizeof(str),"%Y%m%d_%H_%M_%S",ptr);
     return str;
 }
-int wfunction::wmkdir(char *pDir)
+int wfunction::wmkdir(const string & dir)
 {
+    char * pDir=const_cast<char*>(dir.c_str());
     int i = 0;
     int iRet;
     int iLen;
