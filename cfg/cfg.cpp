@@ -67,6 +67,11 @@ void cfg::loadfile()
 		{
 			continue;
 		}
+        if(tmpstring.substr(0,7)=="__END__" && tmpstring.size()==7)
+        {
+            cout<<"break"<<tmpstring<<endl;
+            break;
+        }
         if(tmpstring.find(_sep)==string::npos)
 		{
 			cerr << "ERROR : CFG_FILE line; "<<tmpstring<<endl;
