@@ -14,7 +14,7 @@ public:
 	void closefile();
 	void writeinfo(const std::string &);
 
-private:
+protected:
 	std::ofstream outlog;
 };
 
