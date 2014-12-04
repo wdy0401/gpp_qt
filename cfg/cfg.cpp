@@ -51,7 +51,7 @@ void cfg::loadfile()
 	if(! _pfile->is_open()) //检测文件存在性
 	{
 		delete _pfile;
-		_pfile=NULL;
+		_pfile=nullptr;
 		cerr << "********************************************\n*\n*\n*\n";
 		cerr << "Cannot openfile " << _cfgfile.c_str() << endl;
 		cerr << "Please set cfgfile and restart";

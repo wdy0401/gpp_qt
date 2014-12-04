@@ -54,7 +54,7 @@ bar * bars_manage::mergebar(const std::string & barname,long number)
 	}
 	else
 	{
-		return NULL;
+		return nullptr;
 	}
 }
 bool bars_manage::isbarsexist(const std::string & barname)
