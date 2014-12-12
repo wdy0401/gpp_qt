@@ -197,3 +197,16 @@ int wfunction::wmkdir(const string & dir)
     free(pszDir);
     return iRet;
 }
+string wfunction::replacechar(const string & oldstr,const string & from,const string & to)
+{
+    string str=oldstr;
+    int pos = str.find(from);
+
+    while(pos != string::npos)
+    {
+        str = str.replace(pos, from.length(), to);
+        pos = str.find(from);
+    }
+
+    return str;
+}

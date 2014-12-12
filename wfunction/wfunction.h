@@ -12,7 +12,8 @@ public:
 	static char * gbk2utf8(const char*);
 	static char * utf82gbk(const char*);
     static std::string get_now_second();
-    static int wfunction::wmkdir(const std::string &);
+    static int wmkdir(const std::string &);
+    static std::string replacechar(const std::string & oldstr,const std::string & from,const std::string & to);
 
     //CTP
     static std::string joinquote(const std::string &);

@@ -48,7 +48,7 @@ void order::orderfill(long fillsize)
 		tmpinfo+=" orderid ";
 		tmpinfo+=wfunction::itos(_orderid);
 		tmpinfo+="\n";
-		loginfo.writeinfo(tmpinfo);
+        loginfo.writeinfo(tmpinfo);
 		return;
 	}	
 	if (fillsize>_sizetofill)
