@@ -1,19 +1,20 @@
 #include"orderlist.h"
+#include<iostream>
+#include<QMessageBox>
 #include"../wfunction/wfunction.h"
+#include"../../only_qt_ctp/mainwindow.h"
+#include"../../libs/ctp/ThostFtdcTraderApi.h"
+
+extern MainWindow * mw;
 
 using namespace std;
 
-orderlist::orderlist()
+void orderlist::init()
 {
 	_ordercount=0;
 }
-string orderlist::neworder(std::string symbol,std::string buysell,double price,long size)
+void orderlist::show_warning(const string & warninfo)
 {
-	_ordercount++;
-	string ordername=symbol+wfunction::itos(_ordercount);
-	order * porder=new order;
-	porder->initorder(symbol,buysell,price,size);
-	porder->setorderid(_ordercount);
-	_pend_order[ordername.c_str()]=porder;
-	return ordername;
+    cerr << "Warning from ol" << endl;
+    cerr << warninfo <<endl;
 }
