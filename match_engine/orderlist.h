@@ -1,11 +1,16 @@
 #ifndef ORDERLIST
 #define ORDERLIST
 
-#include<map>
-#include<list>
-#include<QObject>
 #include"order.h"
+
+#include<list>
+#include<map>
+#include<string>
+
+#include<QObject>
+
 #include"../../libs/ctp/ThostFtdcTraderApi.h"
+
 class fillpolicy;
 
 class orderlist :public QObject
@@ -21,6 +26,8 @@ public:
 
 public slots:
     void show_warning(const std::string &);
+    void OnRtnOrder(CThostFtdcOrderField *pOrder);
+    void OnRtnTrade(CThostFtdcTradeField *pTrade);
 
 signals:
 
