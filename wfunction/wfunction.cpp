@@ -30,22 +30,30 @@ using namespace std;
 
 string wfunction::itos(long i)
 {
-    ostringstream os;
+    static ostringstream os;
+    os.clear();
+    os.str("");
     os<<i;
+    static istringstream is;
+    is.clear();
+    is.str(os.str());
     string result;
-    istringstream is(os.str());
 	is>>result;
 	return result; 
 }
 
 string wfunction::ftos(double f)
 {
-    ostringstream os;
-	os<<f; 
+    static ostringstream os;
+    os.clear();
+    os.str("");
+    os<<f;
+    static istringstream is;
+    is.clear();
+    is.str(os.str());
     string result;
-    istringstream is(os.str());
-	is>>result;
-	return result; 
+    is>>result;
+    return result;
 }
 
 list<string> wfunction::splitstring(std::string tp)
