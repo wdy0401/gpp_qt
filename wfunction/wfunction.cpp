@@ -159,11 +159,11 @@ string  wfunction::joinquote(const std::string & tojoin)
 }
 string wfunction::get_now_second()
 {
-    struct tm*ptr;
+    struct tm * ptr=new tm;
     time_t lt;
     char str[80];
     lt=time(NULL);
-    ptr=localtime(&lt);
+    localtime_s(ptr,&lt);
     strftime(str,sizeof(str),"%Y%m%d_%H_%M_%S",ptr);
     return str;
 }
@@ -180,7 +180,7 @@ int wfunction::wmkdir(const string & dir)
         return 0;
     }
 
-    pszDir = strdup(pDir);
+    pszDir = _strdup(pDir);
     iLen = strlen(pszDir);
 
     for (i = 0;i < iLen;i ++)
