@@ -1,7 +1,5 @@
 #include"log_info.h"
-#include"../wtimer/wtimer.h"
 
-extern wtimer tm;	
 
 using namespace std;
 
@@ -11,11 +9,14 @@ bool log_info::setfile(const std::string &filename)
 
     if(! outlog.is_open())
 	{
-		cerr << "Cannot openfile " << filename.c_str() << endl;
-		//getchar();
+        cerr << "Cannot openfile " << filename.c_str() << endl;
         return false;
 	}
     return true;
+}
+void log_info::init()
+{
+    timer=nullptr;
 }
 void log_info::closefile()
 {
@@ -25,7 +26,19 @@ void log_info::closefile()
 
 void log_info::writeinfo(const std::string &outputstring)
 {
-	outlog<<tm.nowtic()<<": ";
-	outlog<<outputstring;
+    outlog<<outputstring;
+}
+
+void log_info::writeinfo_t(const std::string &outputstring)
+{
+    if(timer!=nullptr)
+    {
+        outlog<<tm->nowtic()<<": ";
+    }
+    else
+    {
+        outlog<<"Timer not set:";
+    }
+    outlog<<outputstring;
 }
 
