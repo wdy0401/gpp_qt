@@ -33,7 +33,7 @@ void log_info::writeinfo_t(const std::string &outputstring)
 {
     if(timer!=nullptr)
     {
-        outlog<<tm->nowtic()<<": ";
+        outlog<<timer->nowtic()<<": ";
     }
     else
     {
