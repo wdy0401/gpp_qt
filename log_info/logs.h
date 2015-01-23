@@ -10,24 +10,20 @@
 
 #include<QObject>
 
-class log_info : public QObject
+class logs : public QObject
 {
     Q_OBJECT
 public:
     void init();    
-    bool set_dir(const std::string &);
+    void set_dir(const std::string & d){dir=d;}
     void set_timer(wtimer * p){timer=p;}
-signals:
+public slots:
     void writeinfo(const std::string & info, const std::string & type,bool tm);
 
-    bool setfile(const std::string &);
-    void closefile();
-    void writeinfo(const std::string &);
-    void writeinfo_t(const std::string &);
-
-protected:
-	std::ofstream outlog;
+private:
     wtimer * timer;
+    std::string dir;
+    std::map<std::string , log_info *> infomap;
 };
 
 #endif

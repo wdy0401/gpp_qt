@@ -8,7 +8,7 @@ cmd_line::cmd_line(int n,char **p)
     bool last_is_=false;
     for(int i=1;i<n;i++)
     {
-		cout << n << " " << i << " " << p[i] << endl;
+//		cout << n << " " << i << " " << p[i] << endl;
 		string nowp=p[i];
         if(nowp[0]=='-')
         {
@@ -57,6 +57,5 @@ void cmd_line::fix_char(string &p)
     while(p[0]=='-')
     {
         p.erase(0,1);
-//		cout << "p" << p << endl;
     }
 }

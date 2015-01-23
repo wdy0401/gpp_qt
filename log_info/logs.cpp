@@ -1,44 +1,34 @@
 #include"logs.h"
-
+#include<QDebug>
 
 using namespace std;
 
-bool log_info::setfile(const std::string &filename)
+void logs::init()
 {
-	outlog.open(filename.c_str());
+    log_info * tp1=new log_info;
+    tp1->set_file(this->dir+"/info.txt");
+    tp1->set_timer(timer);
+    infomap["info"]=tp1;
 
-    if(! outlog.is_open())
-	{
-        cerr << "Cannot openfile " << filename.c_str() << endl;
-        return false;
-	}
-    return true;
-}
-void log_info::init()
-{
-    timer=nullptr;
-}
-void log_info::closefile()
-{
-	outlog.close();
-}
+    log_info * tp2=new log_info;
+    tp2->set_file(this->dir+"/trade.txt");
+    tp2->set_timer(timer);
+    infomap["trade"]=tp2;
+ }
 
-
-void log_info::writeinfo(const std::string &outputstring)
+void logs::writeinfo(const std::string & info, const std::string & type,bool tm)
 {
-    outlog<<outputstring;
-}
-
-void log_info::writeinfo_t(const std::string &outputstring)
-{
-    if(timer!=nullptr)
+    if(infomap.find(type)==infomap.end())
     {
-        outlog<<timer->nowtic()<<": ";
+        qDebug()<<"ERROR: logs :type not find \ttype:"<<QString::fromStdString(type)<<endl;
+        return;
+    }
+    if(tm==true)
+    {
+        infomap[type]->writeinfo_t(info);
     }
     else
     {
-        outlog<<"Timer not set:";
+        infomap[type]->writeinfo(info);
     }
-    outlog<<outputstring;
 }
-

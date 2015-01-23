@@ -11,7 +11,7 @@ class log_info
 {
 public:
     void init();
-	bool setfile(const std::string &);
+    bool set_file(const std::string &);
     void closefile();
     void writeinfo(const std::string &);
     void writeinfo_t(const std::string &);

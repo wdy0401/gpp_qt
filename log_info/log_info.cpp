@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool log_info::setfile(const std::string &filename)
+bool log_info::set_file(const std::string &filename)
 {
 	outlog.open(filename.c_str());
 
