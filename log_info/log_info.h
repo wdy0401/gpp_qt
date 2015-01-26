@@ -12,9 +12,9 @@ class log_info
 public:
     void init();
     bool set_file(const std::string &);
-    void closefile();
-    void writeinfo(const std::string &);
-    void writeinfo_t(const std::string &);
+    void close_file();
+    void write_info(const std::string &);
+    void write_info_t(const std::string &);
     void set_timer(wtimer * p){timer=p;}
 
 protected:
