@@ -1,5 +1,5 @@
 #include"qtfunction.h"
-
+#include<QCoreApplication>
 #include<QPluginLoader>
 #include<QDateTime>
 #include<QFileInfo>
@@ -26,16 +26,16 @@ void * qtfunction::load_dll(const std::string & fn)
     QPluginLoader pluginLoader;
     if(file.isFile()==true)
     {
-        qDebug()<<"Load dll " << filename;
+        qDebug()<<"Load_dll " << filename;
     }
     else
     {
         filename=filename.left(filename.size()-4);
-        filename="E:/ccc/Documents/GitHub/build-test_simu_dlls_step-Desktop_Qt_5_3_MSVC2013_32bit-Release/"+filename+"/release/"+filename+".dll";
+        filename=QCoreApplication::applicationDirPath()+"/"+filename+".dll";
         file.setFile(filename);
         if(file.isFile())
         {
-            qDebug()<<"Load dll " << filename;
+            qDebug()<<"Load_dll " << filename;
         }
         else
         {
