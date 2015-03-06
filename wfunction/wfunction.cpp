@@ -110,20 +110,26 @@ char * wfunction::ctp_time_char_convert(char * ori,int length)
 {
 	char * ret = new char[length];
 	memset(ret,'\0',length);
-	int j=0;
-	for(int i=0;i>=0;i++)
+	int j = 0;
+	int i = 0;
+	while(j<length)
 	{
-		if (ori[i]==':')
-		{
-			continue;
-		}
-		if (ori[i]=='\0')
+		if (ori[i] == '\0')
 		{
 			break;
 		}
-		ret[j]=ori[i];
-		j++;
-		
+		if (ori[i] == ':')
+		{
+			continue;
+			i++;
+		}
+		else
+		{
+			ret[j] = ori[i];
+			i++;
+			j++;
+		}
+			
 	}
 	return ret;
 }
