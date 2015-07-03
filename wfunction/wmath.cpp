@@ -18,7 +18,7 @@ double wmath::mean(list<double> * nowlist)
 }
 double wmath::stdev(list<double> * nowlist)
 {
-    if(nowlist->size()==0)
+    if(nowlist->size()==0 || nowlist->size()==1)
     {
         return 0;
     }
