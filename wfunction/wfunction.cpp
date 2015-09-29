@@ -108,30 +108,29 @@ char * wfunction::gbk2utf8(const char * strGBK)
 
 char * wfunction::ctp_time_char_convert(char * ori,int length)
 {
-	char * ret = new char[length];
+    char * ret = new char[length];
 	memset(ret,'\0',length);
 	int j = 0;
 	int i = 0;
-	while(j<length)
+    while(i<length)
 	{
-		if (ori[i] == '\0')
+        if (ori[i] == '\0')
 		{
 			break;
 		}
-		if (ori[i] == ':')
-		{
-			continue;
+        if (ori[i] == ':')
+        {
 			i++;
-		}
-		else
+            continue;
+        }
+        else
 		{
 			ret[j] = ori[i];
 			i++;
 			j++;
 		}
-			
-	}
-	return ret;
+    }
+    return ret;
 }
 string  wfunction::joinquote(const std::string & tojoin)
 {
