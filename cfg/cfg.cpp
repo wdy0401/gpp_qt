@@ -74,7 +74,7 @@ void cfg::loadfile()
         }
         if(tmpstring.find(_sep)==string::npos)
 		{
-			cerr << "ERROR : CFG_FILE line; "<<tmpstring<<endl;
+            cerr << "ERROR : CFG_FILE \nFile name:\t" << _cfgfile <<"\n" <<"line; "<<tmpstring<<endl;
 			continue;
 		}
 		unsigned int fp=tmpstring.find_first_of(_sep);
@@ -82,6 +82,7 @@ void cfg::loadfile()
 		value=tmpstring.substr(fp+1,tmpstring.size());
 		_kvpair[key]=value;
 	}
+    _pfile->close();
 }
 /*
 int main()
