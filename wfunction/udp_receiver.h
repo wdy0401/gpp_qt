@@ -9,7 +9,8 @@ class udp_receiver : public QObject
     Q_OBJECT
 public:
     explicit udp_receiver(QObject *parent = 0);
-    void init();
+    bool init();
+    bool init(int);
     void test();
 signals:
     void broadcast_string(const std::string &);
@@ -18,6 +19,7 @@ public slots:
 private:
     QUdpSocket *udpSocket;
     QByteArray datagram;
+    int port;
 };
 
 #endif // UDP_RECEIVER_H

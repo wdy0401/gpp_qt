@@ -12,6 +12,7 @@ class udp_sender : public QObject
     Q_OBJECT
 public:
     explicit udp_sender(QObject *parent = 0);
+    void init(int);
     void init();
     void test();
 
@@ -23,6 +24,7 @@ private:
     QTimer *timer;
     QByteArray datagram;
     int messageNo;
+    int port;
 };
 
 #endif // UDP_SENDER_H

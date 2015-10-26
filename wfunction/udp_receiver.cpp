@@ -12,11 +12,24 @@ udp_receiver::udp_receiver(QObject *parent) :
     QObject(parent)
 {
 }
-void udp_receiver::init()
+bool udp_receiver::init(int portnumber)
 {
     udpSocket = new QUdpSocket(this);
-    udpSocket->bind(45454, QUdpSocket::ShareAddress);
-    connect(udpSocket, SIGNAL(readyRead()),this, SLOT(processPendingDatagrams()));
+    port=portnumber;
+    if(udpSocket->bind(port, QUdpSocket::ShareAddress))
+    {
+        connect(udpSocket, SIGNAL(readyRead()),this, SLOT(processPendingDatagrams()));
+        return true;
+    }
+    else
+    {
+        cerr <<"Listening Port: "<< port << " is in using"<<endl;
+        return false;
+    }
+}
+bool udp_receiver::init()
+{
+    return init(23425);
 }
 void udp_receiver::test()
 {

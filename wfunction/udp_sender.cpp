@@ -13,13 +13,18 @@ udp_sender::udp_sender(QObject *parent)
 {
 
 }
-void udp_sender::init()
+void udp_sender::init(int portnumber)
 {
     udpSocket = new QUdpSocket(this);
     timer = new QTimer(this);
     messageNo=0;
+    port=portnumber;
 
     connect(timer, SIGNAL(timeout()), this, SLOT(broadcastDatagram()));
+}
+void udp_sender::init()
+{
+    init(23425);
 }
 void udp_sender::test()
 {
@@ -35,9 +40,9 @@ void udp_sender::broadcastDatagram()
     }
     ++messageNo;
 }
- void udp_sender::broadcast_string(const std::string &msg)
- {
-     datagram = QByteArray(msg.c_str());
-     udpSocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, 45454);
-     cout << msg <<endl;
- }
+void udp_sender::broadcast_string(const std::string &msg)
+{
+ datagram = QByteArray(msg.c_str());
+ udpSocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, port);
+ cout << msg <<endl;
+}
