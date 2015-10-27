@@ -42,6 +42,6 @@ void udp_receiver::processPendingDatagrams()
         datagram.resize(udpSocket->pendingDatagramSize());
         udpSocket->readDatagram(datagram.data(), datagram.size());
         emit broadcast_string(datagram.data());
-        cout <<datagram.data()<<endl;
+        cout <<datagram.data();
     }
 }

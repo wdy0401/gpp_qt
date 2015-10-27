@@ -44,5 +44,4 @@ void udp_sender::broadcast_string(const std::string &msg)
 {
  datagram = QByteArray(msg.c_str());
  udpSocket->writeDatagram(datagram.data(), datagram.size(),QHostAddress::Broadcast, port);
- cout << msg <<endl;
 }
