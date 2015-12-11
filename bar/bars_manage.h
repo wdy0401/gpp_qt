@@ -5,8 +5,8 @@
 #include<map>
 #include<string>
 
-//Ä¬ÈÏµÄÊ±¼ä¼ä¸ôÎª1·ÖÖÓ
-//Ä¿Ç°ÉĞÎŞµ÷ÕûÊ±¼ä¼ä¸ôµÄĞèÇó 
+//é»˜è®¤çš„æ—¶é—´é—´éš”ä¸º1åˆ†é’Ÿ
+//ç›®å‰å°šæ— è°ƒæ•´æ—¶é—´é—´éš”çš„éœ€æ±‚ 
 class bars_manage
 {
 public:
@@ -18,6 +18,7 @@ public:
 	void updatebar(const std::string &,double,long);//price and volume "trade"
 	bool isbarsexist(const std::string &);
 	bar * mergebar(const std::string &,long);
+    bars * getbars(const std::string &);
 	
 private:
 	std::map<std::string,bars *> _barsmap;

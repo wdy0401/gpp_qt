@@ -29,28 +29,28 @@ void bars_manage::setlength(const std::string & barname,long length)
 {
 	if(isbarsexist(barname))
 	{
-		_nowbars->setlength(length);
+        _nowbars->setlength(length);
 	}
 }
 void bars_manage::updatebar(const std::string & barname,double value)
 {
 	if(isbarsexist(barname))
 	{
-		_nowbars->updatebar(value);
+        _barsmap[barname]->updatebar(value);
 	}
 }
 void bars_manage::updatebar(const std::string & barname,double value,long volume)
 {
 	if(isbarsexist(barname))
 	{
-		_nowbars->updatebar(value,volume);
+        _barsmap[barname]->updatebar(value,volume);
 	}
 }
 bar * bars_manage::mergebar(const std::string & barname,long number)
 {
 	if(isbarsexist(barname))
 	{
-		return _nowbars->mergebar(number);
+        return _barsmap[barname]->mergebar(number);
 	}
 	else
 	{
@@ -70,4 +70,14 @@ bool bars_manage::isbarsexist(const std::string & barname)
 		return true;
 	}
 }
-	
+bars * bars_manage::getbars(const std::string & barname)
+{
+    if(_barsmap.find(barname)==_barsmap.end())
+    {
+        return nullptr;
+    }
+    else
+    {
+        return _barsmap[barname];
+    }
+}
