@@ -56,14 +56,15 @@ string wfunction::ftos(double f)
     return result;
 }
 
-list<string> wfunction::splitstring(std::string tp)
+list<string> wfunction::splitstring(const std::string & tp)
 {
 	return splitstring(tp,",");
 }
 
-list<string> wfunction::splitstring(std::string tp,const std::string & splitchar)
+list<string> wfunction::splitstring(const std::string & tpt,const std::string & splitchar)
 {
 	list<string> ret;
+    string tp=tpt;
 	while(tp.size())
 	{		
 		int index=tp.find_first_of(splitchar);
