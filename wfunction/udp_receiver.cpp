@@ -23,7 +23,7 @@ bool udp_receiver::init(int portnumber)
     }
     else
     {
-        cerr <<"Listening Port: "<< port << " is in using"<<endl;
+        cerr <<"Listening Port: "<< port << " is not avaiable"<<endl;
         return false;
     }
 }
