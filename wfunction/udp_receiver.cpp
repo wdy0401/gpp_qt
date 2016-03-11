@@ -43,5 +43,6 @@ void udp_receiver::processPendingDatagrams()
         udpSocket->readDatagram(datagram.data(), datagram.size());
         emit broadcast_string(datagram.data());
         cout <<datagram.data();
+        cout.flush();
     }
 }
