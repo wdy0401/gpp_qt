@@ -14,7 +14,7 @@ cfg::~cfg()
 {
 	delete _pfile;
 }
-const std::string cfg::getparam(const std::string & param)
+const std::string cfg::get_para(const std::string & param)
 {
 	if(_kvpair.find(param)!=_kvpair.end())
 	{

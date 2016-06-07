@@ -44,8 +44,8 @@ trans_event te;		//ÐÅÏ¢´«µÝÆ÷
 int main()
 {
 	simucfg.loadfile();
-	string quotefiles=	simucfg.getparam("datafeedfile");
-	string fpname	=	simucfg.getparam("fillpolicy");
+	string quotefiles=	simucfg.get_para("datafeedfile");
+	string fpname	=	simucfg.get_para("fillpolicy");
 
 	me.loadfillpolicy(fpname);
 	df.setfile(quotefiles);
