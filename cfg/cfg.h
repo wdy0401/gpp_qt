@@ -6,8 +6,8 @@
 #include<string>
 #include<map>
 
-//ÔÚ²ÎÊýÊýÁ¿Ôö¼ÓÊ±»ò²ÎÊýÊý¾Ý½á¹¹¸´ÔÓÊ± ÐèÒªÓÃxmlÀ´´¦Àí 
-//xmlÓÐ´ýÊµÏÖ boostÀïÓÐÃ»ÓÐ£¿
+//åœ¨å‚æ•°æ•°é‡å¢žåŠ æ—¶æˆ–å‚æ•°æ•°æ®ç»“æž„å¤æ‚æ—¶ éœ€è¦ç”¨xmlæ¥å¤„ç† 
+//xmlæœ‰å¾…å®žçŽ° boosté‡Œæœ‰æ²¡æœ‰ï¼Ÿ
 
 class cfg
 {
