@@ -2,6 +2,7 @@
 #define CMD_LINE_H
 #include<map>
 #include<string>
+class cfg;
 class cmd_line
 {
 public:
@@ -9,7 +10,7 @@ public:
     std::string get_para(const std::string &);
     void fix_char(std::string &p);
 	bool has_para(const std::string & str);
-
+    friend class cfg;
 private:
     std::map <std::string,std::string> _para_map;
 };

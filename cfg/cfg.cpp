@@ -9,6 +9,8 @@ cfg::cfg()
 {
 	_cfgfile="c:\\cfg\\simu.cfg";
 	_sep="=";
+	_pfile=nullptr;
+	_cl=nullptr;
 }
 cfg::~cfg()
 {
@@ -30,11 +32,13 @@ void cfg::setcfgfile(const std::string & cfgfile)
 	_cfgfile=cfgfile;
 	clearcfg();
 	loadfile();
+	merge();
 }
 void cfg::addcfgfile(const std::string & cfgfile)
 {
 	_cfgfile=cfgfile;
 	loadfile();
+	merge();
 }
 void cfg::setsep(const std::string & sep)
 {
@@ -48,13 +52,14 @@ void cfg::loadfile()
 {
 	_pfile=new ifstream;
 	_pfile->open(_cfgfile.c_str());
-	if(! _pfile->is_open()) //¼ì²âÎÄ¼þ´æÔÚÐÔ
+	if(! _pfile->is_open()) //æ£€æµ‹æ–‡ä»¶å­˜åœ¨æ€§
 	{
 		delete _pfile;
 		_pfile=nullptr;
 		cerr << "********************************************\n*\n*\n*\n";
 		cerr << "Cannot openfile " << _cfgfile.c_str() << endl;
-		cerr << "Please set cfgfile and restart";
+		cerr << "Please set cfgfile and restart"<<endl;
+		cerr << "Press any key to continue"<<endl;
 		cerr << "\n*\n*\n*\n********************************************"<<endl;
 		getchar();
 		return;
@@ -63,7 +68,7 @@ void cfg::loadfile()
 	string key,value;
 	while(getline(*_pfile,tmpstring))
 	{
-		if(tmpstring.size()==0 || tmpstring[0]=='#')//ÅÅ³ý¿ÕÐÐºÍ#¿ªÍ·µÄ×¢ÊÍÐÐ
+		if(tmpstring.size()==0 || tmpstring[0]=='#')//æŽ’é™¤ç©ºè¡Œå’Œ#å¼€å¤´çš„æ³¨é‡Šè¡Œ
 		{
 			continue;
 		}
@@ -83,12 +88,26 @@ void cfg::loadfile()
 		_kvpair[key]=value;
 	}
     _pfile->close();
+	delete _pfile;
+	_pfile=nullptr;
 }
-/*
-int main()
+void cfg::init_cl(int n,char **p)
 {
-	cfg simucfg;
-	simucfg.loadfile();
-	return 0;
+	_cl=new cmd_line(n,p);
+	load_cl();
 }
-*/
+void cfg::load_cl()
+{
+	if(_cl==nullptr)
+	{
+		return;
+	}
+	for(auto iter=_cl->_para_map.begin();iter!=_cl->_para_map.end();iter++)
+	{
+		_kvpair[iter->first]=iter->second;
+	}
+}
+void cfg::merge()
+{
+	load_cl();
+}

@@ -15,27 +15,24 @@ cmd_line::cmd_line(int n,char **p)
 			fix_char(nowp);
 			_para_map[nowp] = "";
             last_is_=true;
-            lastp=nowp;
         }
         else
         {
             if(last_is_==true)
             {
                 _para_map[lastp]=nowp;
-                last_is_=false;
-                lastp=nowp;
             }
             else
             {
                 _para_map[nowp]="";
-                last_is_=false;
-                lastp=nowp;
             }
+            last_is_=false;
         }
+        lastp=nowp;
     }
 }
 
-std::string cmd_line::get_para(const std::string & str)
+string cmd_line::get_para(const string & str)
 {
     string ret="";
     if(_para_map.find(str)!=_para_map.end())
