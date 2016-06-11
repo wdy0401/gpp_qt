@@ -16,7 +16,7 @@ class cfg
 public:
 	cfg();
 	~cfg();
-    const std::string get_para(const std::string &);
+    std::string get_para(const std::string &);
 	void setcfgfile(const std::string &);
 	void addcfgfile(const std::string &);
 	void loadfile();

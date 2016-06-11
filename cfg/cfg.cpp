@@ -16,19 +16,21 @@ cfg::~cfg()
 {
 	delete _pfile;
 }
-const std::string cfg::get_para(const std::string & param)
+string cfg::get_para(const std::string & param)
 {
-	if(_kvpair.find(param)!=_kvpair.end())
-	{
-		return _kvpair[param];
+    string ret="";
+    if(_kvpair.find(param)!=_kvpair.end())
+    {
+        ret=_kvpair[param];
 	}
-	else
-	{
-		return "";
-	}
+    return ret;
 }
 void cfg::setcfgfile(const std::string & cfgfile)
 {
+    if(cfgfile=="")
+    {
+        return;
+    }
 	_cfgfile=cfgfile;
 	clearcfg();
 	loadfile();
@@ -36,7 +38,11 @@ void cfg::setcfgfile(const std::string & cfgfile)
 }
 void cfg::addcfgfile(const std::string & cfgfile)
 {
-	_cfgfile=cfgfile;
+    if(cfgfile.size()==0)
+    {
+        return;
+    }
+    _cfgfile=cfgfile;
 	loadfile();
 	merge();
 }
@@ -68,7 +74,7 @@ void cfg::loadfile()
 	string key,value;
 	while(getline(*_pfile,tmpstring))
 	{
-		if(tmpstring.size()==0 || tmpstring[0]=='#')//排除空行和#开头的注释行
+        if(tmpstring.size()<=1 || tmpstring[0]=='#')//排除空行和#开头的注释行
 		{
 			continue;
 		}
@@ -79,7 +85,7 @@ void cfg::loadfile()
         }
         if(tmpstring.find(_sep)==string::npos)
 		{
-            cerr << "ERROR : CFG_FILE \nFile name:\t" << _cfgfile <<"\n" <<"line; "<<tmpstring<<endl;
+            cerr << "ERROR : CFG_FILE \nFile name:\t" << _cfgfile <<"\n" <<"line: "<<tmpstring<<endl;
 			continue;
 		}
 		unsigned int fp=tmpstring.find_first_of(_sep);
