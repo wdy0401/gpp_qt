@@ -1,17 +1,19 @@
 #ifndef WTIMER
 #define WTIMER
 
-//根据数据输入数据设定时间
-//方式1 20151224.09 15 00 500
-//方式2 将日期设为0 也就是均为0 1之间的小数
+#include<stdio.h>
+#include<windows.h>
 
 class wtimer
 {
 public:
     double nowtic(){return _nowtic;}
+    char * nowtime(){GetLocalTime(&sys);sprintf(a,"%02d:%02d:%02d:%03d",sys.wHour,sys.wMinute,sys.wSecond,sys.wMilliseconds); return a;}
     void settic(double nt){_nowtic =nt;}
 private:
 	double _nowtic;
+	SYSTEMTIME sys;
+	char a[20];
 };
 
 #endif
