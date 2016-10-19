@@ -171,6 +171,7 @@ string wfunction::get_now_second()
     lt=time(NULL);
     localtime_s(ptr,&lt);
     strftime(str,sizeof(str),"%Y%m%d_%H_%M_%S",ptr);
+    delete ptr;
     return str;
 }
 int wfunction::wmkdir(const string & dir)
