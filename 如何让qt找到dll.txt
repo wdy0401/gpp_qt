@@ -1,4 +1,4 @@
 第一 将gui*.dll 的目录加到path里
 第二 
 	1 QApplication::addLibraryPath("C:/QT_DLL/plugins");
-	or QT_PLUGIN_PATH=****/plugins
+	or QT_PLUGIN_PATH=****/plugins 这行会导致qtcreator无法运行。。。
