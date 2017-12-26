@@ -28,6 +28,7 @@ public:
 	void init_cl(int n, char **p);
 	void load_cl();
 	void merge();
+    std::map<std::string,std::string> get_copy(){return _kvpair;}
 private:
 	std::map<std::string,std::string> _kvpair;
 	std::string _cfgfile;
