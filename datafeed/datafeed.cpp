@@ -7,6 +7,7 @@
 #include<assert.h>
 #include<string>
 #include<list>
+#include<deque>
 
 //#include"../match_engine/match_engine.h"
 
@@ -29,8 +30,8 @@ void datafeed::run()
 }
 void datafeed::setfile(const std::string & filename)
 {
-	list<string> filelist=wfunction::splitstring(filename);
-	for(list<string>::iterator iter=filelist.begin();iter!=filelist.end();iter++)
+	deque<string> filelist=wfunction::splitstring(filename);
+	for(deque<string>::iterator iter=filelist.begin();iter!=filelist.end();iter++)
 	{
 		_filenames.push_back(iter->c_str());
 	}
@@ -38,7 +39,7 @@ void datafeed::setfile(const std::string & filename)
 
 void datafeed::checkfilecache()//¿ªÊ¼mergeÊ±£¬¼ì²éÊÇ·ñÓĞ¿Õcache£¬ÈçÓĞÉ¾³ı´ËÎÄ¼şµÄhandle¼°ÏàÓ¦cache
 {
-	for(std::map<std::string,std::list<string> >::iterator iter=_filecache.begin();iter!=_filecache.end();)
+	for(std::map<std::string,std::deque<string> >::iterator iter=_filecache.begin();iter!=_filecache.end();)
 	{
 		if(iter->second.size()==0)
 		{
@@ -55,8 +56,8 @@ void datafeed::checkfilecache()//¿ªÊ¼mergeÊ±£¬¼ì²éÊÇ·ñÓĞ¿Õcache£¬ÈçÓĞÉ¾³ı´ËÎÄ¼şµ
 void datafeed::sendmessage(const string & msg)
 {
 	cout<<msg<<endl;
-	list<string> lists=wfunction::splitstring(msg);
-	list<string>::iterator iter=lists.begin();
+	deque<string> lists=wfunction::splitstring(msg);
+	deque<string>::iterator iter=lists.begin();
 
 	double	nowtime=atof(iter->c_str());
 	tm.settic(nowtime);
@@ -77,11 +78,11 @@ void datafeed::reloadcache()
 	}
 	if(_filenames.size()!=0)
 	{		
-		for(std::list<std::string>::iterator itnamelist=_filenames.begin();  itnamelist!=_filenames.end(); )
+		for(std::deque<std::string>::iterator itnamelist=_filenames.begin();  itnamelist!=_filenames.end(); )
 		{
 			if(_filecache[itnamelist->data()].size() < FILE_RECORD_BUFFER)
 			{
-				std::list<std::string>::iterator it=itnamelist;
+				std::deque<std::string>::iterator it=itnamelist;
 				it++;
 				feedcache(itnamelist->data());
 				itnamelist=it;
@@ -162,7 +163,7 @@ void datafeed::find_next()
 {
 	if(this->getsize()==0)
 	{
-		for(std::map<std::string,std::list<std::string> >::iterator iter=_filecache.begin();iter!=_filecache.end();iter++)
+		for(std::map<std::string,std::deque<std::string> >::iterator iter=_filecache.begin();iter!=_filecache.end();iter++)
 		{
 			if(iter->second.size()==0)
 			{
@@ -185,7 +186,7 @@ void datafeed::find_next()
 	_retstring= _tiny.begin()->second[1];
 	_nowfile=_tiny.begin()->second[0];
 	_tiny.erase(_tiny.begin());
-	std::map<std::string,std::list<std::string> >::iterator iter=_filecache.find(_nowfile);
+	std::map<std::string,std::deque<std::string> >::iterator iter=_filecache.find(_nowfile);
 	if(iter->second.size()>=1)
 	{
 		//¿É¸Ä½øÖ®´¦

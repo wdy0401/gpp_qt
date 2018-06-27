@@ -2,6 +2,7 @@
 #include"bars.h"
 #include<iostream>
 #include<list>
+#include<deque>
 #include<string>
 #include"../wfunction/wfunction.h"
 
@@ -9,8 +10,8 @@ using namespace std;
 
 void bars_manage::addbarlist(const std::string & barlist)
 {	
-	list<string> contracts=wfunction::splitstring(barlist);
-	for(list<string>::iterator iter=contracts.begin();iter!=contracts.end();iter++)
+	deque<string> contracts=wfunction::splitstring(barlist);
+	for(deque<string>::iterator iter=contracts.begin();iter!=contracts.end();iter++)
 	{
 		newbars(iter->c_str());
 	}

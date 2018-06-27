@@ -3,6 +3,7 @@
 
 #include<map>
 #include<list>
+#include<deque>
 #include"vnsnapshot.h"
 
 

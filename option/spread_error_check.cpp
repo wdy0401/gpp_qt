@@ -55,5 +55,5 @@ void Spread_error_check::_updatelist(Vnsnapshot vs)
 	}
 }
 
-//		std::map<std::string,std::list<std::string> >	_eachoptiongroup; //将IO1401C中各个执行价格的都放到一个group里面
+//		std::map<std::string,std::deque<std::string> >	_eachoptiongroup; //将IO1401C中各个执行价格的都放到一个group里面
 

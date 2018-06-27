@@ -1,6 +1,7 @@
 #include"wfunction.h"
 #include<map>
 #include<list>
+#include<deque>
 #include<string>
 #include<iostream>
 #include<sstream>
@@ -56,14 +57,14 @@ string wfunction::ftos(double f)
     return result;
 }
 
-list<string> wfunction::splitstring(const std::string & tp)
+deque<string> wfunction::splitstring(const std::string & tp)
 {
 	return splitstring(tp,",");
 }
 
-list<string> wfunction::splitstring(const std::string & tpt,const std::string & splitchar)
+deque<string> wfunction::splitstring(const std::string & tpt,const std::string & splitchar)
 {
-	list<string> ret;
+	deque<string> ret;
     string tp=tpt;
 	while(tp.size())
 	{		
@@ -143,7 +144,7 @@ string  wfunction::joinquote(const std::string & tojoin)
         cerr<<"ERROR : wfunction::joinquote\t\tstring=tojoin"<<endl;
         return ret;
     }
-    list<string>::iterator iter=ls.begin();
+    deque<string>::iterator iter=ls.begin();
     stringmap["0"]=iter->c_str();
     iter++;
     stringmap[iter->c_str()]=(++iter)->c_str();

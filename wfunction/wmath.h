@@ -1,6 +1,7 @@
 #ifndef WMATH
 #define WMATH
 #include<list>
+#include<deque>
 #include<math.h>
 class wmath
 {

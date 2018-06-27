@@ -8,6 +8,7 @@
 
 #include<map>
 #include<list>
+#include<deque>
 
 /////////////////////////////////////////
 //合并数据已经实现，由于涉及到string的比较问题，效率较低
@@ -29,10 +30,10 @@ public:
 	void sendmessage(const std::string & message);//可扩展的中间件
 	void feedcache(const std::string & );//补充文件cache
 
-	std::list<std::string> _filenames;//文件名列表 一旦文件读取完毕 会被文件列表除名
+	std::deque<std::string> _filenames;//文件名列表 一旦文件读取完毕 会被文件列表除名
 	std::map<long,std::string> _quotecache;//系统可用的数据cache 用map的原因是map自动排序功能
 
-	std::map<std::string,std::list<std::string> > _filecache;//每个文件的cache 任意时刻_quotecache与_filecache都没有逻辑冲突
+	std::map<std::string,std::deque<std::string> > _filecache;//每个文件的cache 任意时刻_quotecache与_filecache都没有逻辑冲突
 	std::map<std::string,std::ifstream * > _filehandle;//每个文件的handle
 
 

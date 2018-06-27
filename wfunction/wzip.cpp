@@ -1,5 +1,6 @@
 #include"wfunction.h"
 #include<list>
+#include<deque>
 #include<string>
 #include<Windows.h>
 
@@ -25,14 +26,14 @@ std::string wfunction::ftos(double f)
 	return result; 
 }
 
-list<string> wfunction::splitstring(std::string tp)
+deque<string> wfunction::splitstring(std::string tp)
 {
 	return splitstring(tp,",");
 }
 
-list<string> wfunction::splitstring(std::string tp,const std::string & splitchar)
+deque<string> wfunction::splitstring(std::string tp,const std::string & splitchar)
 {
-	list<string> ret;
+	deque<string> ret;
 	while(tp.size())
 	{		
 		int index=tp.find_first_of(splitchar);

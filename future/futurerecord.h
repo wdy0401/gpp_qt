@@ -6,6 +6,7 @@
 
 #include<map>
 #include<list>
+#include<deque>
 #include"futuresnapshot.h"
 
 class Futurerecord
