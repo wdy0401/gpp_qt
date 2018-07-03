@@ -18,6 +18,7 @@ public:
 	//用此命令查找需要修改的代码 find . -name "*.cpp" | xargs -i  grep "deque<string>" {}| grep splitstring |wc -l
 	// replace all list with deque 
 	//find . -name "*.cpp" | xargs -i  perl -p -i -e 's/#include<list>/#include<list>\n#include<deque>/;s/list<string>/deque<string>/;s/std::list<std::string>/std::deque<std::string>/;s/std::list<string>/std::deque<string>/;' {}
+	//受限于window 一定会有个bak或者之类指定扩展名的文件出现
 
 
     static std::deque<std::string> splitstring(const std::string & );
